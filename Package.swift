@@ -18,8 +18,8 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(url: "https://github.com/swift-molecules/swift-async.git", branch: "main"),
-        .package(url: "https://github.com/swift-molecules/swift-async-waiter.git", branch: "main"),
+        .package(url: "https://github.com/swift-molecules/swift-async", branch: "main"),
+        .package(url: "https://github.com/swift-molecules/swift-async-waiter", branch: "main"),
     ],
     targets: [
         .target(
