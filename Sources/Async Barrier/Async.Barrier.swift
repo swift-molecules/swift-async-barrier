@@ -1,6 +1,7 @@
 #if !hasFeature(Embedded)
 
-    public import Async
+    public import Async_Primitive
+    public import Async_Lifecycle
     internal import Async_Waiter
     import Synchronization
 

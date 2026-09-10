@@ -12,29 +12,30 @@ let package = Package(
         .visionOS(.v27),
     ],
     products: [
-        .library(
-            name: "Async Barrier",
-            targets: ["Async Barrier"]
-        )
+        .library(name: "Async Barrier", targets: ["Async Barrier"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/swift-molecules/swift-async", branch: "main"),
-        .package(url: "https://github.com/swift-molecules/swift-async-waiter", branch: "main"),
+        .package(url: "https://github.com/swift-atoms/swift-async.git", branch: "main"),
+        .package(url: "https://github.com/swift-molecules/swift-async-waiter.git", branch: "main"),
     ],
     targets: [
         .target(
             name: "Async Barrier",
             dependencies: [
-                .product(name: "Async", package: "swift-async"),
+                .product(name: "Async Lifecycle", package: "swift-async"),
+                .product(name: "Async Mutex", package: "swift-async"),
+                .product(name: "Async Primitive", package: "swift-async"),
                 .product(name: "Async Waiter", package: "swift-async-waiter"),
-            ]
+            ],
+            path: "Sources/Async Barrier"
         ),
         .testTarget(
             name: "Async Barrier Tests",
             dependencies: [
-                "Async Barrier",
                 .product(name: "Async", package: "swift-async"),
-            ]
+                .target(name: "Async Barrier"),
+            ],
+            path: "Tests/Async Barrier Tests"
         ),
     ],
     swiftLanguageModes: [.v6]
