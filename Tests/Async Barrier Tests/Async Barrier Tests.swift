@@ -25,12 +25,10 @@ struct `Async barriers coordinate arrivals and cancellation` {
             }
         }
 
-        try? await Task.sleep(for: .milliseconds(20))
+        for _ in 0..<1_000_000 where barrier.arrived < 1 { await Task.yield() }
         #expect(barrier.arrived == 1, "first party arrived and is suspended")
 
         cancellableTask.cancel()
-
-        try? await Task.sleep(for: .milliseconds(20))
 
         let firstResult = await cancellableTask.value
         if case .failure(.cancelled) = firstResult {
