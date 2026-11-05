@@ -4,6 +4,7 @@ Use this package when a fixed number of parties must all reach a point before an
 
 ## Laws
 
+- `Async.Barrier(parties:)` traps when `parties` is below 1.
 - The barrier is one-shot. It releases on the arrival that brings `arrived` up to `parties` minus `cancelledCount`, and it never resets.
 - After release, every arrival, awaited or callback, proceeds immediately and is not counted in `arrived`.
 - On release, the releasing arrival first resumes every suspended awaited arrival, in no particular order. It then runs the pending callbacks synchronously on its own thread, in arrival order, and runs its own callback last.
